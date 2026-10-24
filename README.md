@@ -1,34 +1,61 @@
-# african-earthquakes-2010-2026-sql-portfolio
-A simple representation of the data analysis of earthquakes recorded in Africa and nearby waters from January 2010 to October 2026. 
+# 🌍 African Earthquakes Analysis (2010–2026)
 
-The project looks at how many earthquakes happened, where they happened, and how strong they were, cause I notices that they have became been growing exponentially in the last few years and here is my analysis and the reason I think is causing them.
+![SQL](https://img.shields.io/badge/SQL-PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
+![Excel](https://img.shields.io/badge/Microsoft_Excel-Data_Cleaning-217346?style=flat&logo=microsoft-excel&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power_BI-Dashboard-F2C811?style=flat&logo=powerbi&logoColor=black)
+![Data Source](https://img.shields.io/badge/Source-USGS_Catalog-00599C?style=flat)
 
-**Project Questions**
-How many earthquakes were recorded each year?
+## 📌 Project Overview
+An end-to-end data analysis portfolio project examining **16 years of seismic activity across the African continent (2010–2026)**. Using **Excel**, **SQL (PostgreSQL)**, and **Power BI**, this project transforms raw geological records from the **United States Geological Survey (USGS)** into actionable insights on geographic hotspots, focal depth patterns, and a **spotlight investigation into the exponential surge of earthquakes in East Africa alongside the construction and filling of the Grand Ethiopian Renaissance Dam (GERD)**.
 
-Which countries have the most earthquakes?
+### 🖼️ Dashboard Preview
+> 
 
-How strong are most earthquakes?
+---
 
-How reliable is the data?
+## 🛠️ Tech Stack & Workflow
+* **Data Source:** USGS Earthquake Hazards Program (ComCat Catalog)
+* **Data Cleaning & Preprocessing:** Microsoft Excel & SQL (PostgreSQL)
+* **Exploratory Data Analysis (EDA):** SQL (aggregations, time-series trends, spatial filtering, window functions and CTEs)
+* **Data Visualization:** Microsoft Power BI
 
-**Main Findings**
-- Most earthquakes happen in East Africa. Eastern Africa has about two thirds of all recorded events (1,811 of 2,740) which could relate to the newly build Dam their. 
-- Ethiopia has the most in a single country, with 420 events, followed by Somalia (296) and Djibouti (241).
+---
 
-- The number changes a lot from year to year. 2010 had 257 earthquakes and 2025 had the most with 350. 
+## 📥 1. Data Gathering Process (USGS)
+* **Source Extraction:** Extracted historical seismic event records (`2010-01-01` to `Q3 of 2026`) from the **USGS Earthquake Catalog**.
+* **Geographic Scope:** Filtered records across the African continent through the longtitude and the latitude Advanced filters and adjacent fault boundaries, with a primary focus on the **East African Rift System (EARS)**, the **Main Ethiopian Rift**, and the **North African Mediterranean boundary**.
+* **Core Attributes Collected:**
+  * `time` — Exact UTC timestamp of the seismic event.
+  * `latitude` & `longitude` — Epicenter geographic coordinates.
+  * `place` — Nearest geographic region and country identifier.
 
-- 2026 only covers part of the year, so it should not be compared with full years.
+---
 
-- Most earthquakes are small. The typical earthquake has a magnitude of about 4.4 which is high for poor countries with weak infrastructure built to be as cheap as possible. 
+## 🧹 2. Data Cleaning & Transformation
+Raw seismic logs from global sensors contain inconsistent formatting, missing measurements, and non-standardized location strings. The dataset was cleaned prior to analysis using **Excel** and **SQL**:
 
-- Only 5 of the 2,740 events were strong, meaning magnitude 6.0 or higher. 
+* **Removing Empty & Incomplete Rows:**
+  * Audited the dataset for `NULL` and blank values across critical columns (`mag`, `depth`, `latitude`, `longitude`, `place`, and `Country`).
+  * Removed incomplete sensor entries where missing magnitude or coordinate data would skew regional frequency trends and map visuals.
+* **Unifying Letter Casing & String Standardization:**
+  * Standardized inconsistent text across region names, country labels, and magnitude types (`magType`) using text functions (`UPPER`, `LOWER`, `INITCAP` / `PROPER`, and `TRIM`).
+  * Eliminated duplicate grouping anomalies caused by mixed casing (e.g., unifying variations like `ethiopia`, `ETHIOPIA`, and `Ethiopia`) to ensure accurate `GROUP BY` aggregations in SQL and clean slicers in Power BI.
+* **Feature Extraction & Categorization:**
+  * Parsed UTC timestamps into standardized `Year`, `Quarter`, and `Month` columns to track year-over-year growth rates.
+  * Extracted clean **Country** names from raw USGS `place` strings.
+  * Classified events into **Magnitude Tiers** (*Light, Moderate, Strong, Major*) and **Depth Zones** (*Shallow: under 70 km, Intermediate: 70–300 km, Deep: over 300 km*).
 
-- The strongest was a magnitude 6.8 earthquake in Morocco in September 2023.
+```sql
+-- Removing incomplete records
+DELETE FROM african_earthquakes
+WHERE mag IS NULL
+   OR depth IS NULL
+   OR place IS NULL
+   OR TRIM(place) = '';
 
-- Some earthquakes happen at sea. About a third of the events are offshore, so they are not on land.
-
-
-To open the project files:
-Dashboards: download the free software Power Bi and download the .pbix file which has all the dashboards in screenshots in an interactive format.
-SQL: download the excel and connect it your Database management software and run the .sql file
+-- Standardizing text casing to prevent duplicate grouping
+UPDATE african_earthquakes
+SET place = INITCAP(TRIM(place)),
+    mag_type = LOWER(TRIM(mag_type));<img width="1407" height="798" alt="Geography   Regions" src="https://github.com/user-attachments/assets/46170fb1-dd5d-4687-afa8-970e454743b7" />
+<img width="1412" height="790" alt="African Seismic Activity" src="https://github.com/user-attachments/assets/143a0d02-7c50-43e2-ad14-ee50305c8c96" />
+<img width="1412" height="790" alt="African Seismic Activity" src="https://github.com/user-attachments/assets/a866f421-267d-4175-9629-d650a0be8ce3" />
