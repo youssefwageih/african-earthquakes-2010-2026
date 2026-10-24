@@ -1,5 +1,7 @@
 # african-earthquakes-2010-2026-sql-portfolio
-A simple data analysis of earthquakes recorded in Africa and nearby waters from January 2010 to October 2026. The project looks at how many earthquakes happened, where they happened, and how strong they were.
+A simple representation of the data analysis of earthquakes recorded in Africa and nearby waters from January 2010 to October 2026. 
+
+The project looks at how many earthquakes happened, where they happened, and how strong they were, cause I notices that they have became been growing exponentially in the last few years and here is my analysis and the reason I think is causing them.
 
 **Project Questions**
 How many earthquakes were recorded each year?
