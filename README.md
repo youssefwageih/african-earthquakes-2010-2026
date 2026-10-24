@@ -35,8 +35,8 @@ An end-to-end data analysis project examining **16 years of seismic activity acr
 Raw seismic logs from global sensors contain inconsistent formatting, missing measurements, and non-standardized location strings. The dataset was cleaned prior to analysis using **Excel** and **SQL**:
 
 * **Removing Empty & Incomplete Rows:**
-  * Audited the dataset for `NULL` and blank values across critical columns (`mag`, `depth`, `latitude`, `longitude`, `place`, and `Country`).
-  * Removed incomplete sensor entries where missing magnitude or coordinate data would skew regional frequency trends and map visuals.
+* * Audited the dataset for `NULL` and blank values across critical columns (`mag`, `depth`, `latitude`, `longitude`, `place`, and `Country`).
+* * Removed incomplete sensor entries where missing magnitude or coordinate data would skew regional frequency trends and map visuals.
 * **Removed the non African Countries and Regions:**
 * *Removed South European Countries and Islands that intersect with African Borders
 * *Removed West Asians Countries like Saudi, Yemen, etc...
