@@ -37,6 +37,9 @@ Raw seismic logs from global sensors contain inconsistent formatting, missing me
 * **Removing Empty & Incomplete Rows:**
   * Audited the dataset for `NULL` and blank values across critical columns (`mag`, `depth`, `latitude`, `longitude`, `place`, and `Country`).
   * Removed incomplete sensor entries where missing magnitude or coordinate data would skew regional frequency trends and map visuals.
+* **Removed the non African Countries and Regions:**
+* *Removed South European Countries and Islands that intersect with African Borders
+* *Removed West Asians Countries like Saudi, Yemen, etc...
 * **Unifying Letter Casing & String Standardization:**
   * Standardized inconsistent text across region names, country labels, and magnitude types (`magType`) using text functions (`UPPER`, `LOWER`, `INITCAP` / `PROPER`, and `TRIM`).
   * Eliminated duplicate grouping anomalies caused by mixed casing (e.g., unifying variations like `ethiopia`, `ETHIOPIA`, and `Ethiopia`) to ensure accurate `GROUP BY` aggregations in SQL and clean slicers in Power BI.
