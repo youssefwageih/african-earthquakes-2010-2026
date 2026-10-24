@@ -44,18 +44,3 @@ Raw seismic logs from global sensors contain inconsistent formatting, missing me
   * Parsed UTC timestamps into standardized `Year`, `Quarter`, and `Month` columns to track year-over-year growth rates.
   * Extracted clean **Country** names from raw USGS `place` strings.
   * Classified events into **Magnitude Tiers** (*Light, Moderate, Strong, Major*) and **Depth Zones** (*Shallow: under 70 km, Intermediate: 70–300 km, Deep: over 300 km*).
-
-```sql
--- Removing incomplete records
-DELETE FROM african_earthquakes
-WHERE mag IS NULL
-   OR depth IS NULL
-   OR place IS NULL
-   OR TRIM(place) = '';
-
--- Standardizing text casing to prevent duplicate grouping
-UPDATE african_earthquakes
-SET place = INITCAP(TRIM(place)),
-    mag_type = LOWER(TRIM(mag_type));<img width="1407" height="798" alt="Geography   Regions" src="https://github.com/user-attachments/assets/46170fb1-dd5d-4687-afa8-970e454743b7" />
-<img width="1412" height="790" alt="African Seismic Activity" src="https://github.com/user-attachments/assets/143a0d02-7c50-43e2-ad14-ee50305c8c96" />
-<img width="1412" height="790" alt="African Seismic Activity" src="https://github.com/user-attachments/assets/a866f421-267d-4175-9629-d650a0be8ce3" />
