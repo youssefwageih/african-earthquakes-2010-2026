@@ -6,7 +6,7 @@
 ![Data Source](https://img.shields.io/badge/Source-USGS_Catalog-00599C?style=flat)
 
 ## 📌 Project Overview
-An end-to-end data analysis portfolio project examining **16 years of seismic activity across the African continent (2010–2026)**. Using **Excel**, **SQL (PostgreSQL)**, and **Power BI**, this project transforms raw geological records from the **United States Geological Survey (USGS)** into actionable insights on geographic hotspots, focal depth patterns, and a **spotlight investigation into the exponential surge of earthquakes in East Africa alongside the construction and filling of the Grand Ethiopian Renaissance Dam (GERD)**.
+An end-to-end data analysis project examining **16 years of seismic activity across the African continent (2010–2026)**. Using **Excel**, **SQL (PostgreSQL)**, and **Power BI**, this project transforms raw geological records from the **United States Geological Survey (USGS)** into actionable insights on geographic hotspots, focal depth patterns, and a **spotlight investigation into the exponential surge of earthquakes in East Africa alongside the construction and filling of the Grand Ethiopian Renaissance Dam (GERD)**.
 
 ### 🖼️ Dashboard Preview
 > 
