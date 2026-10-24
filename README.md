@@ -3,8 +3,11 @@ A simple data analysis of earthquakes recorded in Africa and nearby waters from 
 
 **Project Questions**
 How many earthquakes were recorded each year?
+
 Which countries have the most earthquakes?
+
 How strong are most earthquakes?
+
 How reliable is the data?
 
 **Main Findings**
