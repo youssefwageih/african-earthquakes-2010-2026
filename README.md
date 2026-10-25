@@ -8,6 +8,7 @@
 ## 📌 Project Overview
   * **Project Motivation:** Investigated recent seismic trends across Africa after observing an unprecedented increase in felt tremors in Egypt over the past few years, prompting a proactive look into shifting regional patterns.
   * **Historical Context:** Framed the investigation around the enduring impact of the 1992 Cairo earthquake—which caused widespread devastation and displacement—to analyze current tectonic activity against historical risk thresholds.
+
 An end-to-end data analysis project examining **16 years of seismic activity across the African continent (2010–2026)**. Using **Excel**, **SQL (PostgreSQL)**, and **Power BI**, this project transforms raw geological records from the **United States Geological Survey (USGS)** into actionable insights on geographic hotspots, focal depth patterns, and a **spotlight investigation into the exponential surge of earthquakes in East Africa alongside the construction and filling of the Grand Ethiopian Renaissance Dam (GERD)**.
 
 ### 🖼️ Dashboard Preview
